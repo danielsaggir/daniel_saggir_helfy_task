@@ -29,7 +29,7 @@ function App() {
   });
 
   return (
-    <div>
+    <div className="app">
       <h1>Daniel Saggir Helfy Full Stack Task</h1>
       <TaskFilter onFilterChange={setFilter} />
 
@@ -37,7 +37,7 @@ function App() {
       tasks={filteredTasks} 
       onToggle={handleToggle} 
       onDelete={handleDelete} />
-      
+
     </div>
   );
 }

@@ -2,7 +2,7 @@ import TaskItem from "./TaskItem.jsx";
 
 function TaskList({ tasks, onToggle, onDelete, onEdit }) {
   if (tasks.length === 0) {
-    return <p>No tasks</p>;
+    return <p className="empty-msg">No tasks here — add one above!</p>;
   }
 
   const doubledTasks = [...tasks, ...tasks];

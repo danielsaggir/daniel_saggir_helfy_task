@@ -106,17 +106,25 @@ function App() {
 
   return (
     <div className={`app ${theme}`}>
-      <button className="theme-toggle" onClick={toggleTheme}>
-        {theme === "light" ? "Dark mode" : "Light mode"}
-      </button>
-      <h1>Daniel Saggir Helfy Full Stack Task</h1>
-      <TaskFilter filter={filter} onFilterChange={handleFilterChange} />
-      <TaskSort sortBy={sortBy} onSortChange={handleSortChange} />
-      <TaskForm
-        taskToEdit={editingTask}
-        onSubmit={editingTask ? handleUpdate : handleCreate}
-        onCancel={() => setEditingTask(null)}
-      />
+      <header className="app-header">
+        <h1>Task Manager</h1>
+        <button className="theme-toggle" onClick={toggleTheme}>
+          {theme === "light" ? "Dark mode" : "Light mode"}
+        </button>
+      </header>
+
+      <div className="toolbar">
+        <TaskFilter filter={filter} onFilterChange={handleFilterChange} />
+        <TaskSort sortBy={sortBy} onSortChange={handleSortChange} />
+      </div>
+
+      <div className="form-section">
+        <TaskForm
+          taskToEdit={editingTask}
+          onSubmit={editingTask ? handleUpdate : handleCreate}
+          onCancel={() => setEditingTask(null)}
+        />
+      </div>
 
       {error && <p className="error-msg">{error}</p>}
 

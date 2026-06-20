@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 import { getTasks, toggleTask, deleteTask } from "./api/tasks";
 import TaskItem from "./components/TaskItem.jsx";
+import TaskFilter from "./components/TaskFilter.jsx";
+import TaskList from "./components/TaskList.jsx";
+
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [filter, setFilter] = useState("all");
 
   const handleToggle = async (id) => {
     const updated = await toggleTask(id);
@@ -18,16 +22,22 @@ function App() {
     getTasks().then(setTasks);
   }, []);
 
+  const filteredTasks = tasks.filter((t) => {
+    if (filter === "completed") return t.completed;
+    if (filter === "active") return !t.completed;
+    return true;
+  });
+
   return (
     <div>
       <h1>Daniel Saggir Helfy Full Stack Task</h1>
+      <TaskFilter onFilterChange={setFilter} />
 
-        {tasks.map((task) => (
-          <TaskItem key={task.id} 
-          task={task} 
-          onToggle={handleToggle} 
-          onDelete={handleDelete} />
-        ))}
+      <TaskList 
+      tasks={filteredTasks} 
+      onToggle={handleToggle} 
+      onDelete={handleDelete} />
+      
     </div>
   );
 }

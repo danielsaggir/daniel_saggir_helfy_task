@@ -2,6 +2,7 @@ const API_URL = "http://localhost:4000/api/tasks";
 
 export async function getTasks() {
   const res = await fetch(API_URL);
+  if (!res.ok) throw new Error("Failed to fetch tasks");
   return res.json();
 }
 
@@ -11,6 +12,7 @@ export async function createTask(task) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(task),
   });
+  if (!res.ok) throw new Error("Failed to create task");
   return res.json();
 }
 
@@ -20,15 +22,17 @@ export async function updateTask(id, task) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(task),
   });
+  if (!res.ok) throw new Error("Failed to update task");
   return res.json();
 }
 
 export async function deleteTask(id) {
-  await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+  const res = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+  if (!res.ok) throw new Error("Failed to delete task");
 }
 
 export async function toggleTask(id) {
-  const res = await fetch(`${API_URL}/${id}/toggle`, {
-    method: "PATCH" });
-    return res.json();
+  const res = await fetch(`${API_URL}/${id}/toggle`, { method: "PATCH" });
+  if (!res.ok) throw new Error("Failed to toggle task");
+  return res.json();
 }

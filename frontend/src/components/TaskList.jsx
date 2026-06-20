@@ -1,6 +1,6 @@
-import TaskItem from "./TaskItem";
+import TaskItem from "./TaskItem.jsx";
 
-function TaskList({ tasks, onToggle, onDelete }) {
+function TaskList({ tasks, onToggle, onDelete, onEdit }) {
   if (tasks.length === 0) {
     return <p>No tasks</p>;
   }
@@ -16,6 +16,7 @@ function TaskList({ tasks, onToggle, onDelete }) {
             task={task}
             onToggle={onToggle}
             onDelete={onDelete}
+            onEdit={onEdit}
           />
         ))}
       </div>

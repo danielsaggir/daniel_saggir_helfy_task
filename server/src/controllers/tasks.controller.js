@@ -22,10 +22,19 @@ function updateTask(req, res) {
     Object.assign(task, {title, description, completed, priority });
   
     res.json(task);
-  }
+}
+
+function deleteTask(req, res) {
+  const id = Number(req.params.id);
+  const index = tasks.findIndex((t) => t.id === id);
+  if (index === -1) return res.status(404).json({ message: "Task not found" });
+  tasks.splice(index, 1);
+  res.status(204).send();
+}
 
 module.exports = {
   getAllTasks,
   createTask,
   updateTask,
+  deleteTask,
 };

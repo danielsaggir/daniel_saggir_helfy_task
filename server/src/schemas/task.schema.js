@@ -25,8 +25,13 @@ const updateTaskSchema = z.object({
   priority: taskPrioritySchema,
 });
 
+const deleteTaskSchema = z.object({
+  id: z.number().int().positive(),
+});
+
 module.exports = {
   taskSchema,
   createTaskSchema,
   updateTaskSchema,
+  deleteTaskSchema,
 };

@@ -11,7 +11,21 @@ function createTask(req, res) {
   res.status(201).json(newTask);
 }
 
+function updateTask(req, res) {
+    const id = Number(req.params.id);
+    const task = tasks.find((t) => t.id === id);
+  
+    if (!task)
+        return res.status(404).json({ message: "Task not found" });
+  
+    const { title, description, completed, priority } = req.body;
+    Object.assign(task, {title, description, completed, priority });
+  
+    res.json(task);
+  }
+
 module.exports = {
   getAllTasks,
   createTask,
+  updateTask,
 };

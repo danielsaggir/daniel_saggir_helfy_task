@@ -5,10 +5,11 @@ function getAllTasks(req, res) {
 }
 
 function createTask(req, res) {
-  const { title, description, completed, priority } = req.body;
-  const newTask = { id: tasks.length + 1, title, description, completed, priority, createdAt: new Date() };
-  tasks.push(newTask);
-  res.status(201).json(newTask);
+    const { title, description, completed, priority } = req.body;
+    const newId = Math.max(0, ...tasks.map((t) => t.id)) + 1;
+    const newTask = { id: newId, title, description, completed, priority, createdAt: new Date() };    
+    tasks.push(newTask);
+    res.status(201).json(newTask);
 }
 
 function updateTask(req, res) {

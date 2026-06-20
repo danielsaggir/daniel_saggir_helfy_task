@@ -48,4 +48,5 @@ module.exports = {
   createTask,
   updateTask,
   deleteTask,
+  toggleTask,
 };

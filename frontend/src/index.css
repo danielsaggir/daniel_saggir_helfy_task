@@ -54,6 +54,10 @@ body {
   margin: 0;
 }
 
+body:has(.app.dark) {
+  background: #1a1a1a;
+}
+
 #root {
   width: 1126px;
   max-width: 100%;

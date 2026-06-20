@@ -4,6 +4,20 @@
   padding: 20px;
 }
 
+.theme-toggle {
+  display: block;
+  margin: 0 auto 16px;
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: #f5f5f5;
+}
+
 .app h1 {
   text-align: center;
   margin-bottom: 24px;
@@ -38,6 +52,18 @@
 
 .task-filter button:hover {
   background: #f5f5f5;
+}
+
+.task-filter button.active {
+  background: #e8e8e8;
+}
+
+.task-sort {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
 .task-form {
@@ -148,4 +174,45 @@
   to {
     transform: translateX(-50%);
   }
+}
+
+.app.dark {
+  color: #eee;
+}
+
+.app.dark .theme-toggle,
+.app.dark .task-filter button,
+.app.dark .task-form input,
+.app.dark .task-form select,
+.app.dark .task-form button,
+.app.dark .task-item button,
+.app.dark .task-sort {
+  background: #333;
+  border-color: #555;
+  color: #eee;
+}
+
+.app.dark .theme-toggle:hover,
+.app.dark .task-filter button:hover,
+.app.dark .task-form button:hover,
+.app.dark .task-item button:hover {
+  background: #444;
+}
+
+.app.dark .task-filter button.active {
+  background: #555;
+}
+
+.app.dark .task-item {
+  background: #2a2a2a;
+  border-color: #444;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.app.dark .task-item p {
+  color: #bbb;
+}
+
+.app.dark .loading-msg {
+  color: #aaa;
 }

@@ -11,4 +11,14 @@ const taskSchema = z.object({
   priority: taskPrioritySchema,
 });
 
-module.exports = taskSchema;
+const createTaskSchema = z.object({
+  title: z.string().min(1),
+  description: z.string().default(""),
+  completed: z.boolean().optional().default(false),
+  priority: taskPrioritySchema.optional().default("medium"),
+});
+
+module.exports = {
+  taskSchema,
+  createTaskSchema,
+};

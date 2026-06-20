@@ -40,7 +40,7 @@ Open two terminals — backend first, then frontend.
 
 ```bash
 cd backend
-npm run dev
+npm start
 ```
 
 Runs on http://localhost:4000
@@ -49,10 +49,10 @@ Runs on http://localhost:4000
 
 ```bash
 cd frontend
-npm run dev
+npm start
 ```
 
-Runs on http://localhost:5173 (Vite default port)
+Runs on http://localhost:3000
 
 The frontend talks to `http://localhost:4000/api/tasks` — so the backend has to be running or you'll get errors.
 
